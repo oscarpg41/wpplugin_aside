@@ -232,7 +232,6 @@ License: GPLv2
         $valueInputName  = "";
         $valueInputId    = "";
 
-        echo("<div class='wrap'><h2>Añadir un nuevo aside</h2></div>"); 
 
         if(isset($_POST['action']) && $_POST['action'] == 'salvaropciones'){
 
@@ -246,20 +245,27 @@ License: GPLv2
             }   
         }
         else{
+   
             //recuperamos la tarea a realizar (edit o delete)
-            if (isset($_GET["task"]))
+            if (isset($_GET["task"])){
                 $task = $_GET["task"]; //get task for choosing function
-            else
+            }
+            else{
                 $task = '';
+            }
             //recuperamos el id del telefono
-            if (isset($_GET["id"]))
+            if (isset($_GET["id"])){
                 $id = $_GET["id"];
-            else
+            }
+            else{
                 $id = 0;
+            }
 
 
             switch ($task) {
                 case 'edit_aside':
+                    echo("<div class='wrap'><h2>Modificar información</h2></div>"); 
+
                     $row = opg_plugin_aside_getId($id);
                     $valueInputUrl   = $row->url;
                     $valueInputName  = $row->name;
@@ -272,6 +278,7 @@ License: GPLv2
                     opg_aside_remove($id);
                     break;
                 default:
+                    echo("<div class='wrap'><h2>Añadir un nuevo aside</h2></div>"); 
                     break;
             }
         }
