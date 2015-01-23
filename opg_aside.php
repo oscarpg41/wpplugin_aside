@@ -50,11 +50,11 @@ License: GPLv2
 
         $sql = 'CREATE TABLE IF NOT EXISTS `' . $wpdb->prefix . 'opg_plugin_aside` 
             ( `idAside` INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY , 
-              `name` VARCHAR( 100 ) NOT NULL , 
+              `name` VARCHAR( 100 ) COLLATE utf8_spanish_ci NOT NULL , 
               `url` VARCHAR( 140 ) NOT NULL,
-              `txt` VARCHAR( 255 ) NOT NULL,
+              `txt` VARCHAR( 255 ) COLLATE utf8_spanish_ci,
               `num_order` INT ( 3 ) NOT NULL,                
-              `image` VARCHAR( 140 ) NOT NULL )';
+              `image` VARCHAR( 140 ) NOT NULL ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci';
         $wpdb->query($sql);
     }
 
