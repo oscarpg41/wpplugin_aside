@@ -176,7 +176,7 @@ License: GPLv2
     {
         global $wpdb;
 
-        $asides = $wpdb->get_results( 'SELECT idAside, name, url, txt, image FROM ' . $wpdb->prefix . 'opg_plugin_aside
+        $asides = $wpdb->get_results( 'SELECT idAside, name, url, txt, image, num_order FROM ' . $wpdb->prefix . 'opg_plugin_aside
          ORDER BY num_order' );
         if (count($asides)>0){            
 ?>
@@ -188,6 +188,7 @@ License: GPLv2
                     <th scope="col" class="manage-column"><span>Nombre</span></th>
                     <th scope="col" class="manage-column"><span>Url</span></th>
                     <th scope="col" class="manage-column"><span>Texto</span></th>
+                    <th scope="col" class="manage-column"><span>Orden</span></th>
                     <th scope="col" class="manage-column"><span>Imagen</span></th>
                     <th scope="col" class="manage-column">&nbsp;</th>
                     <th scope="col" class="manage-column">&nbsp;</th>
@@ -206,6 +207,7 @@ License: GPLv2
                     <td><?php echo( $aside->name ); ?></td>
                     <td><?php echo( $aside->url ); ?></td>
                     <td><?php echo( $aside->txt ); ?></td>
+                    <td><?php echo( $aside->num_order ); ?></td>
                     <td><img src="<?php echo $aside->image ?>" style="max-width: 40px"></td>
                     <td><a href="admin.php?page=opg_aside&amp;task=edit_aside&amp;id=<?php echo( $aside->idAside ); ?>"><img src="<?php echo WP_PLUGIN_URL.'/opg_aside/img/modificar.png'?>" alt="Modificar"></a></td>
                     <td><a href="#"><img src="<?php echo WP_PLUGIN_URL.'/opg_aside/img/papelera.png'?>" alt="Borrar" id="<?php echo( $aside->idAside ); ?>" class="btnDeleteAside"></a></td>
